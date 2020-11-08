@@ -2,14 +2,14 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>MyNewPlugin WAM</title>
+    <title>synth02 WAM</title>
     <link href="styles/style.css" rel="stylesheet" type="text/css"/>
     <script src="scripts/audioworklet.js"></script>
     <script async src="fonts.js"></script>
     <script async src="svgs.js"></script>
     <script async src="imgs.js"></script>
     <script async src="imgs@2x.js"></script>
-    <script async src="scripts/MyNewPlugin-web.js"></script>
+    <script async src="scripts/synth02-web.js"></script>
   </head>
   <body>
     <div id="main"></div>
@@ -27,7 +27,7 @@
         <canvas class="pluginArea" id="canvas" oncontextmenu="event.preventDefault()"></canvas>
       </div>
     <script type='text/javascript'>
-      var MyNewPlugin_WAM; // the WAM controller
+      var synth02_WAM; // the WAM controller
 
       document.addEventListener("keydown", function(e) { if(e.keyCode == 9) {e.preventDefault(); }});
       document.addEventListener("touchmove", function(e) { e.preventDefault(); }, {passive: false});
@@ -67,7 +67,7 @@
               }
 
               combo.onchange = e => {
-                MyNewPlugin_WAM.midiOut = e.target.options[e.target.selectedIndex].port;
+                synth02_WAM.midiOut = e.target.options[e.target.selectedIndex].port;
               }
             } else {
               for (let input of midiIF.inputs.values()) {
@@ -77,7 +77,7 @@
               }
 
               combo.onchange = e => {
-                MyNewPlugin_WAM.midiIn = e.target.options[e.target.selectedIndex].port;
+                synth02_WAM.midiIn = e.target.options[e.target.selectedIndex].port;
               }
             }
 
@@ -116,7 +116,7 @@
           script1.src = "scripts/wam-controller.js";
           script1.onload = () => {
             var script2 = document.createElement("script");
-            script2.src = "scripts/MyNewPlugin-awn.js";
+            script2.src = "scripts/synth02-awn.js";
             script2.onload = () => {
 
               if(AWPF.isAudioWorkletPolyfilled)
@@ -130,17 +130,17 @@
                              numberOfOutputs: outputBuses.length, outputChannelCount: outputBuses,
                              processorOptions: {inputChannelCount: inputBuses}};
 
-              MyNewPluginController.importScripts(actx).then(() => {
-                MyNewPlugin_WAM = new MyNewPluginController(actx, options);
+              synth02Controller.importScripts(actx).then(() => {
+                synth02_WAM = new synth02Controller(actx, options);
 
-                if(MyNewPlugin_WAM !== undefined) {
+                if(synth02_WAM !== undefined) {
                   {
-                    MyNewPlugin_WAM.connect(actx.destination); // connect WAM output to speakers
+                    synth02_WAM.connect(actx.destination); // connect WAM output to speakers
                     connectionsDone();
                   }
                 }
                 else {
-                  console.log('MyNewPlugin_WAM is undefined');
+                  console.log('synth02_WAM is undefined');
                 }
               });
             }
@@ -153,7 +153,7 @@
       // helper method for sending an "arbitary" message to the processor, which can be handled in OnMessage()
       function SendMessageToWAM(msgTag, ctrlTag = -1, data = 0) {
         let propArg = String(msgTag + ":" + ctrlTag);
-        MyNewPlugin_WAM.port.postMessage({ "type": "msg", "verb": "SAMFUI", "prop": propArg, "data": data });
+        synth02_WAM.port.postMessage({ "type": "msg", "verb": "SAMFUI", "prop": propArg, "data": data });
       }
       
       var statusElement = document.getElementById('status');

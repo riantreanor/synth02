@@ -1,6 +1,6 @@
-/* Declares the MyNewPlugin Audio Worklet Node */
+/* Declares the synth02 Audio Worklet Node */
 
-class MyNewPluginController extends WAMController
+class synth02Controller extends WAMController
 {
   constructor (actx, options) {
     options = options || {};
@@ -10,16 +10,16 @@ class MyNewPluginController extends WAMController
     if (options.processorOptions.inputChannelCount === undefined) options.processorOptions = {inputChannelCount:[]};
 
     options.buflenSPN = 1024;
-    super(actx, "MyNewPlugin", options);
+    super(actx, "synth02", options);
   }
 
   static importScripts (actx) {
     var origin = "https://riantreanor.github.io/synth02/";
 
     return new Promise( (resolve) => {
-      actx.audioWorklet.addModule(origin + "scripts/MyNewPlugin-wam.js").then(() => {
+      actx.audioWorklet.addModule(origin + "scripts/synth02-wam.js").then(() => {
       actx.audioWorklet.addModule(origin + "scripts/wam-processor.js").then(() => {
-      actx.audioWorklet.addModule(origin + "scripts/MyNewPlugin-awp.js").then(() => {
+      actx.audioWorklet.addModule(origin + "scripts/synth02-awp.js").then(() => {
         resolve();
       }) }) });
     })

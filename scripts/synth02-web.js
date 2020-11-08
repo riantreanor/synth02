@@ -978,9 +978,9 @@ function updateGlobalBufferAndViews(buf) {
   Module['HEAPF64'] = HEAPF64 = new Float64Array(buf);
 }
 
-var STACK_BASE = 5293024,
+var STACK_BASE = 5292992,
     STACKTOP = STACK_BASE,
-    STACK_MAX = 50144;
+    STACK_MAX = 50112;
 
 var TOTAL_STACK = 5242880;
 
@@ -1213,7 +1213,7 @@ function isFileURI(filename) {
 }
 
 // end include: URIUtils.js
-var wasmBinaryFile = 'MyNewPlugin-web.wasm';
+var wasmBinaryFile = 'synth02-web.wasm';
 if (!isDataURI(wasmBinaryFile)) {
   wasmBinaryFile = locateFile(wasmBinaryFile);
 }
@@ -1341,8 +1341,8 @@ var tempI64;
 var ASM_CONSTS = {
   3532: function() {if(Module.syncdone == 1) { Module.syncdone = 0; FS.syncfs(false, function (err) { assert(!err); console.log("Synced to IDBFS..."); Module.syncdone = 1; }); }},  
  3699: function($0) {var name = '/' + UTF8ToString($0) + '_data'; FS.mkdir(name); FS.mount(IDBFS, {}, name); Module.syncdone = 0; FS.syncfs(true, function (err) { assert(!err); console.log("Synced from IDBFS..."); Module.syncdone = 1; ccall('iplug_fsready', 'v'); });},  
- 23569: function($0, $1, $2) {if(typeof window[Module.UTF8ToString($0)] === 'undefined' ) { console.log("warning - SAMFUI called before controller exists"); } else { window[Module.UTF8ToString($0)].sendMessage('SAMFUI', "", Module.HEAPU8.slice($1, $1 + $2).buffer); }},  
- 23815: function($0) {if(typeof window[Module.UTF8ToString($0)] === 'undefined' ) { console.log("warning - SendDSPIdleTick called before controller exists"); } else { window[Module.UTF8ToString($0)].sendMessage("TICK", "", 0.); }}
+ 23537: function($0, $1, $2) {if(typeof window[Module.UTF8ToString($0)] === 'undefined' ) { console.log("warning - SAMFUI called before controller exists"); } else { window[Module.UTF8ToString($0)].sendMessage('SAMFUI', "", Module.HEAPU8.slice($1, $1 + $2).buffer); }},  
+ 23783: function($0) {if(typeof window[Module.UTF8ToString($0)] === 'undefined' ) { console.log("warning - SendDSPIdleTick called before controller exists"); } else { window[Module.UTF8ToString($0)].sendMessage("TICK", "", 0.); }}
 };
 
 
