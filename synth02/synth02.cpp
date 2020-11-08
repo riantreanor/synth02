@@ -60,7 +60,7 @@ synth02::synth02(const InstanceInfo& info)
     /* ADD CONTROLS */
     
     // Background control, either a fixed color, gradient, svg or bitmap
-    pGraphics->AttachPanelBackground(COLOR_DARK_GRAY); /* TASK_01 */
+    pGraphics->AttachPanelBackground(COLOR_RED); /* TASK_01 */
 //    pGraphics->AttachPanelBackground(IPattern::CreateLinearGradient(bounds, EDirection::Vertical, {{COLOR_LIGHT_GRAY, 0.}, {COLOR_DARK_GRAY, 1.}}));
      
     // Group controls (background labels)
