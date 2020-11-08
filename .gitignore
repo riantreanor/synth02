@@ -1,10 +1,10 @@
 .DS_Store
 xcuserdata
-MyNewPlugin/.vs
-MyNewPlugin/build-web/*.data
-MyNewPlugin/build-web/imgs*
-MyNewPlugin/build-web/fonts.js
-MyNewPlugin/build-web/svgs.js
-MyNewPlugin/build-web/favicon.ico
+synth02/.vs
+synth02/build-web/*.data
+synth02/build-web/imgs*
+synth02/build-web/fonts.js
+synth02/build-web/svgs.js
+synth02/build-web/favicon.ico
 *.RPP-bak
 
